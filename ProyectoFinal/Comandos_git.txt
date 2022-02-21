@@ -1,0 +1,8 @@
+1. git branch -> para ver en que rama estamos y que ramas hay
+2. git checkout "rama" -> para mover en una rama
+3. git status -> para ver cambios pendientes de subir a git 
+4. git add . -> para agregar los cambios al stage
+5. git commit -> para comprometer los cambios. 
+
+1. git status
+2. git add
