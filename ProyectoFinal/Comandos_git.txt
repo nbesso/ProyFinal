@@ -4,6 +4,4 @@
 4. git add . -> para agregar los cambios al stage
 5. git commit -m "mensaje del commit" -> para comprometer los cambios. 
 6. git push origin "rama" -> subir cambios a github a la rama en la que estamos. 
-
-1. git status
-2. git add
+7. git merge "rama desde la que quiero traer cambios" -> ojo debemos estar parados en la rama a donde queremos traer los cambios. 
