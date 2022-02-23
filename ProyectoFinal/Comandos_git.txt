@@ -5,3 +5,4 @@
 5. git commit -m "mensaje del commit" -> para comprometer los cambios. 
 6. git push origin "rama" -> subir cambios a github a la rama en la que estamos. 
 7. git merge "rama desde la que quiero traer cambios" -> ojo debemos estar parados en la rama a donde queremos traer los cambios. 
+8. git pull origina master -> traer rama master actualizada desde git hub hasta mi vsc (actualiza carpetas del disco c)
