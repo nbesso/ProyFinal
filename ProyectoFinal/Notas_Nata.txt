@@ -1,1 +1,4 @@
-Hola mundo 
+Creacion del proyecto
+creacion de la APP "blog"
+se creo carpeta "template" y se guardo archivo html index
+se creo carpte "static"  y se pego archivos "assets", "css" y "js"
