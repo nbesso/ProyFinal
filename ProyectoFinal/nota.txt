@@ -1,1 +1,6 @@
-Esta es la rama master
+Usuario y Pass admin
+
+Usu: admin_PNG
+pass: admin
+e-mail: hfpaije@koandina.com
+
