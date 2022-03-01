@@ -1,60 +1,17 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<!--GON: ESTE ES EL FORMATO ORIGINAL    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactenos</title>
--->
-<meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Mandanos tu mensaje</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/shaker.ico' %}" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-        
-        <br>
-        <br>
-        <br>
-        <h1 class="masthead-heading text-uppercase mb-0">Dejanos tu mensaje</h1>
-</head>
-<body id="page-top">
-    <!-- Navigation (BARRA AZUL)-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    </nav>
+{% extends 'blog/index.html' %}
 
-    <!-- Masthead (BARRA VERDE)-->
-    <!-- <header class="masthead bg-primary text-black text-left">-->
-
-<!-- +++++++++++++++++++++++  GON: DATOS DE FORMULARIO INICIO +++++++++++++++++++++++++++++ -->
-            <br>
-            <form method="post">{% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Enviar">
-                <p>
-                    <br>
-                    <a href="{% url 'Inicio' %}">Cancelar</a>
-                </p>
-            </form>
-
-<!-- +++++++++++++++++++++++  GON: DATOS DE FORMULARIO FIN ++++++++++++++++++++++++++++++++ -->
+{% block content %}
     
-<!-- GON: Sección contacto inicio  -->
-    <section>
-        <footer class="footer text-center">
-        </footer>
-    </section>
-     <!--GON: Sección contacto FIN-->
-</body>
-</html>  
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar">
+        <p>
+            <br>
+            <a href="{% url 'Inicio' %}">Cancelar</a>
+            </p>
+    </form>
+
+{% endblock %}
+
+
 

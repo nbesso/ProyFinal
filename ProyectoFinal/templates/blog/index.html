@@ -30,7 +30,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Cocktails">Cocktails</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Sobre Nosotros">Sobre Nosotros</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Inicio' %}">Blog</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'New' %}">Blog</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'New' %}">Contacto</a></li>
                     </ul>
                 </div>
@@ -152,7 +152,30 @@
                 </div>-->
             </div>
         </section>
-        
+        <section class="page-section Contactanos" id="Contactanos">
+            <div class="content container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contactanos</h2>
+                <!-- Icon Divider-->
+                    <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                    </div>
+                    <div class="text-center text-uppercase text-secondary mb-0">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+                <!-- About Section Content-->
+                <!-- About Section Button
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                        <i class="fas fa-download me-2"></i>
+                        Free Download!
+                    </a>
+                </div>-->
+            </div>
+        </section>        
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
