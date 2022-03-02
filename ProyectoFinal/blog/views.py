@@ -9,7 +9,7 @@ from .models import *
 # Create your views here.
 
 def inicio(request):
-    return render(request, 'blog/index.html')
+    return render(request, 'blog/contacto_form.html')
 
 
 #GON: Vista que muestra lista de Contactos creados
@@ -18,7 +18,7 @@ class ContactoList(ListView):
     template_name = "blog/contacto_list.html"
 
 #GON: Vista que crea un Contacto y envía mensaje
-class Creacion_contacto(CreateView):
+class Contactanos(CreateView):
     model = Contacto
     success_url = "/blog/contacto/list"
     fields = ['nombre', 'apellido', 'email' , 'telefono', 'mensaje']
