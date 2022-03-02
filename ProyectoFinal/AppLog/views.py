@@ -28,7 +28,7 @@ def login_request(request):
             if user:
                 login(request, user)
 
-                return redirect('List')
+                return redirect('Inicio')
             else:
                 return redirect('Login')
 

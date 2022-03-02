@@ -2,7 +2,7 @@
 
 {% block content %}
     
-    <form method="post">{% csrf_token %}
+    <form method="POST">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Enviar">
         <p>

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'blog/index.html' %}
 
-    <h1>Contacto</h1>
+{% block General %}
 
     <ul>
         {% for Contacto in object_list %}
@@ -24,7 +16,8 @@
 
     </ul>
     <p>
-        <a href="{% url 'New' %}">Crear</a>
+        <a href="{% url 'Inicio' %}">Crear</a>
     </p>
-</body>
-</html>
+
+{% endblock General %}
+
