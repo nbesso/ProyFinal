@@ -12,3 +12,6 @@ class Contacto(models.Model):
     telefono = models.IntegerField(unique=True, null=False)
     mensaje = models.CharField(max_length=250, null=False)
 
+    def __str__(self):
+        return f'Datos de Contacto: {self.nombre} {self.apellido}'
+        
