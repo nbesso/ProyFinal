@@ -32,7 +32,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Cocktails">Cocktails</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Sobre Nosotros">Sobre Nosotros</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Inicio' %}">Blog</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Suscribete">Suscribete</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Suscribite">Suscribite</a></li>
                     </ul>
                 </div>
             </div>
@@ -155,20 +155,21 @@
                 </div>-->
             </div>
         </section>
-        <section class="page-section Suscribete" id="Suscribete">
-            <div class="content container">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Suscribete</h2>
+        <section class="page-section Suscribite" id="Suscribite">
+            <!--<div class="col form align-items-center h-50 w-50">
+            <img class="img-fluid" src="{% static 'blog/assets/img/caras/CocktailsAmigos.png' %}" alt="..." />
+            </div>-->
+            <div class=""><i class=""></i></div>
+            <!-- About Section Heading-->
+            <div class="col form text-center">
+                <img src="{% static 'blog/assets/img/caras/CocktailsAmigos.png' %}" width="400" height="400" style="margin:0px 0px 0px 100px;float:left;"/>
+                <h5 class="page-section-heading text-center text-secondary mb-0">Suscribite a nuestro newsletter</h5>
+                <div class="mb-5">
+                </div>
+                {% block content %}
+                {% endblock content %}
                 <!-- Icon Divider-->
-                    <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                    </div>
-                    <div class="text-center text-uppercase text-secondary mb-5">
-                    {% block content %}
-                    {% endblock content %}
-                    </div>
+            </div>
                 <!-- About Section Content-->
                 <!-- About Section Button
                 <div class="text-center mt-4">
@@ -180,7 +181,6 @@
             </div>
         </section>        
         <!-- Footer-->
-
     {% endblock FondoBlanco %}
     {% block  Footer  %}
         <footer class="footer text-center">

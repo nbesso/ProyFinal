@@ -1,17 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    
+    <div class="col form">
     <form method="POST">{% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Enviar">
+    </div>
+        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Enviar Suscripción">
         <p>
             <br>
             <a href="{% url 'Inicio' %}">Cancelar</a>
             </p>
     </form>
-
 {% endblock content %}
-
-
-
