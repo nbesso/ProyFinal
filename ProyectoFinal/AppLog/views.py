@@ -30,10 +30,10 @@ def login_request(request):
 
                 return redirect('Inicio')
             else:
-                return redirect('Login')
+                return redirect('login')
 
         else:
-            return redirect('Login')
+            return redirect('login')
     
     form = AuthenticationForm()
 
