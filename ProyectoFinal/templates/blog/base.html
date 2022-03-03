@@ -159,26 +159,17 @@
             <!--<div class="col form align-items-center h-50 w-50">
             <img class="img-fluid" src="{% static 'blog/assets/img/caras/CocktailsAmigos.png' %}" alt="..." />
             </div>-->
-            <div class=""><i class=""></i></div>
             <!-- About Section Heading-->
-            <div class="col form text-center">
-                <img src="{% static 'blog/assets/img/caras/CocktailsAmigos.png' %}" width="400" height="400" style="margin:0px 0px 0px 100px;float:left;"/>
-                <h5 class="page-section-heading text-center text-secondary mb-0">Suscribite a nuestro newsletter</h5>
-                <div class="mb-5">
+            <form class="form-inline flex-column flex-sm-row" >
+                <div class="mb-5 form-inline flex-column flex-sm-row">
+                <img src="{% static 'blog/assets/img/caras/CocktailsAmigos.png' %}" width="400" height="400" style="margin:0px 50px 0px 0px;float:left;"/>
+                <h5 class="page-section-heading text-align-left text-secondary mb-0">Suscribite a nuestro newsletter</h5>
                 </div>
                 {% block content %}
                 {% endblock content %}
                 <!-- Icon Divider-->
-            </div>
-                <!-- About Section Content-->
-                <!-- About Section Button
-                <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
-                    </a>
-                </div>-->
-            </div>
+                </div>
+            </form>
         </section>        
         <!-- Footer-->
     {% endblock FondoBlanco %}
