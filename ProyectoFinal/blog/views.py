@@ -9,32 +9,31 @@ from .models import *
 # Create your views here.
 
 def inicio(request):
-    return render(request, 'blog/contacto_form.html')
-
+    return render(request, 'blog/Inicio.html')
 
 #GON: Vista que muestra lista de Contactos creados
-class ContactoList(ListView):
-    model = Contacto
-    template_name = "blog/contacto_list.html"
+class SuscriptorList(ListView):
+    model = Suscriptor
+    template_name = "blog/suscriptor_list.html"
 
 #GON: Vista que crea un Contacto y envía mensaje
-class Contactanos(CreateView):
-    model = Contacto
-    success_url = "/blog/contacto/list"
-    fields = ['nombre', 'apellido', 'email' , 'telefono', 'mensaje']
+class Suscribete(CreateView):
+    model = Suscriptor
+    success_url = "/blog/inicio/#page-top"
+    fields = ['nombre', 'apellido', 'email']
 
 #GON: Vista para visualizar Detalles de un Contacto ya creado.
-class Detalle_contacto(DetailView):
-    model = Contacto
-    template_name = "blog/contacto_detalle.html"
+class Detalle_suscriptor(DetailView):
+    model = Suscriptor
+    template_name = "blog/suscriptor_detalle.html"
 
 #GON: Vista que modifica un Contacto.
-class Modifica_contacto(UpdateView):
-    model = Contacto
-    success_url = "/blog/contacto/list"
-    fields = ['nombre', 'apellido', 'email' , 'telefono', 'mensaje']
+class Modifica_suscriptor(UpdateView):
+    model = Suscriptor
+    success_url = "/blog/editar/<int:pk>/"
+    fields = ['nombre', 'apellido', 'email']
 
 #GON: Vista que elimina un Contacto.
-class Elimina_contacto(DeleteView):
-    model = Contacto
-    success_url = "/blog/contacto/list"
+class Elimina_suscriptor(DeleteView):
+    model = Suscriptor
+    success_url = "/blog/suscriptor/list"
