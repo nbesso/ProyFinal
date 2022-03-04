@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block FondoAzul %}
+{% endblock FondoAzul %}
+{% block FondoBlanco %}
+    <ul>
+        {% for Suscriptor in object_list %}
+        <li>
+            <p>Apellido y Nombre: {{Suscriptor.apellido}}, {{Suscriptor.nombre}}
+            </p>
+        </li>
+            <li>
+            <p>    E-Mail: {{Suscriptor.email}}
+            </p>
+        
+            <p>
+                <a href="{% url 'Detail' Suscriptor.id %}">Detalles</a>
+                <!--<a href="{% url 'Edit' Suscriptor.id %}">Editar</a>-->
+                <a href="{% url 'Delete' Suscriptor.id %}">Eliminar</a>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>
+        <a href="{% url 'Inicio' %}">Crear</a>
+    </p>
+
+{% endblock FondoBlanco %}
+{% block Footer %}
+{% endblock Footer %}
+
+

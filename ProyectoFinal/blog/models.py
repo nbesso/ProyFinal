@@ -1,3 +1,5 @@
+from logging import PlaceHolder
+from pydoc import text
 from django.db import models
 
 # Create your models here.
@@ -5,13 +7,11 @@ from django.db import models
 
 #GON: Modelo para crear un contacto y enviar un mesaje
 
-class Contacto(models.Model):
+class Suscriptor(models.Model):
     nombre = models.CharField(max_length=40, null=False)
     apellido = models.CharField(max_length=40, null=False)
     email = models.EmailField(unique=True, null=False)
-    telefono = models.IntegerField(unique=True, null=False)
-    mensaje = models.CharField(max_length=250, null=False)
 
     def __str__(self):
-        return f'Datos de Contacto: {self.nombre} {self.apellido}'
+        return f'Datos de Suscriptor: {self.nombre} {self.apellido}'
         

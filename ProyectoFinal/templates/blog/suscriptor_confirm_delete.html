@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block FondoAzul %}{% endblock FondoAzul %}
+
+{% block FondoBlanco %}
+<!-- +++++++++++++++++++++++  GON: DATOS DE CONTACTO +++++++++++++++++++++++++++++ -->
+        <form method="post">{% csrf_token %}
+            Estas seguro de eliminar al Suscriptor {{ object.email }}?<br>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+
+<!-- +++++++++++++++++++++++  GON: Crear botón para volver a pag principal ++++++++++ -->
+        <br>
+        <p>
+            <a href="{% url 'List' %}">Cancelar</a>
+        </p>
+
+{% endblock FondoBlanco %}
+
+{% block Footer %}{% endblock Footer %}

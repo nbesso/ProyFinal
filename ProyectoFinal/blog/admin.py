@@ -3,4 +3,4 @@ from blog.models import *
 
 # Register your models here.
 
-admin.site.register(Contacto)
+admin.site.register(Suscriptor)

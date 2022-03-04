@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <form method="POST"> {% csrf_token %}
+        {{ form.as_p }} 
+        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Enviar Suscripción">
+    </form>
+{% endblock content %}
