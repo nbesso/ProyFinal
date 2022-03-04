@@ -39,3 +39,25 @@ def login_request(request):
 
     return render(request, 'AppLog/login.html', {'form': form})
 
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+
+        if form.is_valid():
+            username = form.data['username']
+            try:
+                user_new = User.objects.get(username=username)
+            except django.contrib.auth.models.User.DoesNotExist:
+                user_new = None
+
+            if not user_new:
+                form.save()
+
+            return redirect('Login')
+
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'AppLog/register.html', {'form': form})
