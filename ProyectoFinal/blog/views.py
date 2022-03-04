@@ -19,7 +19,7 @@ class SuscriptorList(ListView):
 #GON: Vista que crea un Contacto y envía mensaje
 class Suscribete(CreateView):
     model = Suscriptor
-    success_url = "/blog/inicio/#page-top"
+    success_url = "/blog/inicio/#suscribite"
     fields = ['nombre', 'apellido', 'email']
 
 #GON: Vista para visualizar Detalles de un Contacto ya creado.

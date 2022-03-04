@@ -2,6 +2,8 @@ from logging import PlaceHolder
 from pydoc import text
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -28,7 +30,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     autor = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     modificado_el = models.DateTimeField(auto_now= True)
-    contenido = models.TextField()
+    contenido = RichTextUploadingField()
     creado_el = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
 

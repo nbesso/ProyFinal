@@ -18,9 +18,30 @@
               <p class=" text-muted">{{ post.autor }} | {{ post.creado_el }}</p>
               <p class="card-text ">{{ object.contenido | safe }}</p>
             </div>
-          </div>
+          </div>     
         </div>
-      </div>
+
+        {% for mensaje in mensajes %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ mensaje }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        <!--aca debo crear vistas mensajes y direccionar url mensaje-->
+        <form action="{% url 'Inicio' %}" method="POST"> {% csrf_token %}
+        <!--aca debo crear vistas mensajes y direccionar url mensaje-->
+        <input type="textarea" name="Comentar">
+        <input type="submit" class="btn btn-primary btn-sm btn-block" value="Comentar">
+        </form>
+        {% else %} 
+        Login para comentar
+        {% endif %}
+        <br>
+        <a href="{% url 'post_list'%}">Volver</a>  
+    </div>
 
     <script src="{% static 'js/scripts.js' %}"></script> 
 </body>
