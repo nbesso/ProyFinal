@@ -55,7 +55,7 @@ def register(request):
             if not user_new:
                 form.save()
 
-            return redirect('Login')
+            return redirect('login')
 
     else:
         form = UserRegisterForm()
