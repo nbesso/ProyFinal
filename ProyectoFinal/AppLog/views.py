@@ -30,10 +30,10 @@ def login_request(request):
 
                 return redirect('Inicio')
             else:
-                return redirect('Login')
+                return redirect('login')
 
         else:
-            return redirect('Login')
+            return redirect('login')
     
     form = AuthenticationForm()
 
@@ -55,7 +55,7 @@ def register(request):
             if not user_new:
                 form.save()
 
-            return redirect('Login')
+            return redirect('login')
 
     else:
         form = UserRegisterForm()
