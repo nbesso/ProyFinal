@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Post</title>
+    <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <ul>
+        {% for Post in object_list %}
+        <li>
+            <p>Titulo: {{Post.titulo}}
+               Autor: {{Post.autor}} 
+            </p>     
+        </li>
+        {% endfor %}
+    </ul>
+    <p>
+        <a href="{% url 'Inicio' %}">Inicio</a>
+    </p>
+    <h1> 
+
+        Estooo es un salto de la pagina
+
+    </h1>
+    <div class="col-md-8 mt-3 left">
+        {% for Post in post_list %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ Post.titulo }}</h2>
+                <p class="card-text text-muted h6">{{ Post.autor }} | {{ Post.creado_el}} </p>
+                <p class="card-text">{{Post.contenido|slice:":200" }}</p>
+                <a href="{% url 'post_detail' Post.slug %}">Detalle</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/scripts.js' %}"></script> 
+</body>
+</html>
