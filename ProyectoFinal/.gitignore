@@ -1,10 +1,20 @@
 *.log
+
 *.pot
+
 *.pyc
+
 __pycache__
+
 db.sqlite3
-#media
+
+media
+
+static/root
+
 Notas_Nata.txt
+
+migrations
 
 
 
