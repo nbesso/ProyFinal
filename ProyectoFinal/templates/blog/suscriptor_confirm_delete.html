@@ -3,7 +3,7 @@
 
 {% block FondoBlanco %}
 <!-- +++++++++++++++++++++++  GON: DATOS DE CONTACTO +++++++++++++++++++++++++++++ -->
-        <form method="post">{% csrf_token %}
+        <form method="POST">{% csrf_token %}
             Estas seguro de eliminar al Suscriptor {{ object.email }}?<br>
             <br>
             <input type="submit" value="Enviar">
