@@ -1,11 +1,25 @@
 *.log
+
 *.pot
+
 *.pyc
+
 __pycache__
+<<<<<<< HEAD
 db.sqlite3
 media
 static/root
+=======
+
+
+media
+
+static/root
+
+>>>>>>> 55c066b8986e2223dbfbe9e277f2fc670a18c892
 Notas_Nata.txt
+migrations
+
 migrations
 
 

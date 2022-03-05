@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Post</title>
     <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
+    <script>window.CKEDITOR_BASEPATH = '/static/root/ckeditor/ckeditor/';</script>
 </head>
 <body>
 
@@ -22,7 +23,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ Post.titulo }}</h2>
                 <p class="card-text text-muted h6">{{ Post.autor }} | {{ Post.creado_el}} </p>
-                <p class="card-text">{{Post.contenido|slice:":200" }}</p>
+                <p class="card-text">{{Post.contenido|slice:":200"|safe}}</p>
                 <a href="{% url 'post_detail' Post.slug %}">...Ver mas -></a>
             </div>
         </div>
