@@ -19,7 +19,7 @@ class SuscriptorList(ListView):
 #GON: Vista que crea un Contacto y envía mensaje
 class Suscribete(CreateView):
     model = Suscriptor
-    success_url = "/blog/inicio/#page-top"
+    success_url = "/blog/inicio/#suscribite"
     fields = ['nombre', 'apellido', 'email']
 
 #GON: Vista para visualizar Detalles de un Contacto ya creado.
@@ -37,3 +37,20 @@ class Modifica_suscriptor(UpdateView):
 class Elimina_suscriptor(DeleteView):
     model = Suscriptor
     success_url = "/blog/suscriptor/list"
+
+
+#FACU: Vista que lista post.
+
+class PostList(ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
+    queryset = Post.objects.filter(status=1).order_by('-creado_el')
+
+class PostDetail(DetailView):
+    model = Post
+    template_name = 'blog/post_detalle.html'
+
+class PostCreate(CreateView):
+    model = Post
+    success_url = "/blog/post/list"
+    fields = ['titulo','autor','status','contenido','slug']
