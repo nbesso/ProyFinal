@@ -10,13 +10,22 @@
     
 </head>
 <body>
-
+    
     <div style="margin:0px 0px 0px 50px">
-        <form method="POST"> {% csrf_token %} 
-        {{ form.media }}
-        {{ form.as_p }} 
-        <input type="submit" class="btn btn-primary btn-sm btn-block" value="POSTEAR">
-        </form>
+        {% if request.user.is_authenticated %}
+            {% if user.is_staff == 1%}
+                <form method="POST"> {% csrf_token %} 
+                {{ form.media }}
+                {{ form.as_p }} 
+                <input type="submit" class="btn btn-primary btn-sm btn-block" value="POSTEAR">
+                </form>
+            {% else %}
+                Usted no es Admin, no puede redactar Post.
+            {% endif %}
+        {% else %} 
+        Debe Loguearse para crear un Post
+        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Login</a></li>
+        {% endif %}
     </div>
 
     <script src="{% static 'blog/js/scripts.js' %}"></script> 

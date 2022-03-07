@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Cocktails">Cocktails</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Sobre Nosotros">Sobre Nosotros</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Sobre Nosotros">Acerca de Nosotros</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'post_list' %}">Blog</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Suscribite">Suscribite</a></li>
                         <!-- Si el usuario NO está logeado mostrar el boton Login -->
@@ -139,7 +139,7 @@
         <section class="page-section bg-primary text-white mb-0" id="Sobre Nosotros">
             <div class="container">
                 <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">Sobre Nosotros</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-white">Acerca de Nosotros</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -241,11 +241,31 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/mojito.png' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">El mojito me gusta y lo conoci en cuba</p>
-                                    <button class="btn btn-primary" href="{% url 'Inicio' %}" data-bs-dismiss="modal">
+                                    <p class="mb-4">El mojito es uno de las bebidas más populares en la coctelería.
+                                        <br>
+                                        <br>
+                                        INGREDIENTES:
+                                        <br>
+                                        2  cucharaditas de azúcar blanca
+                                        <br>
+                                        8 hojas de hierbabuena (2 ramitas de menta)
+                                        <br>
+                                        30 ml de jugo de lima
+                                        <br>
+                                        60 ml. de ron cubano (Havana Club)
+                                        <br>
+                                        1/2 lima en rodajas o cuartos
+                                        <br>
+                                        120 ml. de Soda (Agua con gas con sifón)
+                                        <br>
+                                        Hielo picado
+                                        <br>
+                                        Unas gotas de angostura (opcional)
+                                    </p>
+                                    <!-- <button class="btn btn-primary" href="{% url 'Inicio' %}" data-bs-dismiss="modal">
                                         <i class="fas fa-times fa-fw"></i>
                                         Ver Receta
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                         </div>
