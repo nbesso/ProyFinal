@@ -8,13 +8,26 @@
     <title>Lista de Post</title>
     <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
     <script>window.CKEDITOR_BASEPATH = '/static/root/ckeditor/ckeditor/';</script>
+
+    <!-- Si el usuario NO está logeado mostrar el boton Login -->
+    {% if not request.user.is_authenticated %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+    <!-- Si el usuario SI está logeado mostrar el nombre de usuario y Boton Logout -->
+    {% if request.user.is_authenticated %}
+    <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"> Usuario Logueado: {{user.username}} </a> </p>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
+    {% endif %}
 </head>
 <body>
 
     <div class="col-md-8 mt-3 left" style="margin:0px 0px 0px 50px">
         <h1>Posteos 
             <ul>
-            <a href="{% url 'post_create'%}">Crear</a>    
+            <!-- Si el usuario es Admin mostrar boton crear -->
+                {% if request.user.is_authenticated and user.is_staff == 1%}
+                    <a href="{% url 'post_create'%}">Crear</a>
+                {% endif %}
             <a href="{% url 'Inicio'%}">Inicio</a>        
             </ul>
         </h1>        
