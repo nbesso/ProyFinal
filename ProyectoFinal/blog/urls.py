@@ -10,7 +10,11 @@ urlpatterns = [
     path('borrar/<int:pk>/', Elimina_suscriptor.as_view(), name='Delete'),
 #
     path('post/create', PostCreate.as_view(), name='post_create'),
+    path('post/update/<slug:slug>/', PostUpdate.as_view(), name='post_update'),
+    path('post/delete/<slug:slug>/', PostDelete.as_view(), name='post_delete'),
     path('post/list', PostList.as_view(), name='post_list'),
-    path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    path('post/list/self', PostListSelf.as_view(), name='post_list_self'),
+    #path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    path('<slug:slug>/', post_detail, name='post_detail')
 #    path('borrar/<int:pk>/', Elimina_suscriptor.as_view(), name='Delete'),
 ]

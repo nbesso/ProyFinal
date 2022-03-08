@@ -17,7 +17,8 @@
                 <form method="POST"> {% csrf_token %} 
                 {{ form.media }}
                 {{ form.as_p }} 
-                <input type="submit" class="btn btn-primary btn-sm btn-block" value="POSTEAR">
+                <input type="submit" class="btn btn-primary btn-sm btn-block" value="Postear">
+                <a href= {% url 'post_list' %} class="btn btn-primary  btn-sm">Volver a los post</a>
                 </form>
             {% else %}
                 Usted no es Admin, no puede redactar Post.

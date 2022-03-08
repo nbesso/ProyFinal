@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import *
+from .forms import *
 
 # Importaciones desde Django
 from django.views.generic import ListView
@@ -46,6 +48,11 @@ class PostList(ListView):
     template_name = 'blog/post_list.html'
     queryset = Post.objects.filter(status=1).order_by('-creado_el')
 
+class PostListSelf(ListView):
+    model = Post
+    template_name = 'blog/post_list_self.html'
+    queryset = Post.objects.filter(status=1).order_by('-creado_el')
+
 class PostDetail(DetailView):
     model = Post
     template_name = 'blog/post_detalle.html'
@@ -54,3 +61,36 @@ class PostCreate(CreateView):
     model = Post
     success_url = "/blog/post/list"
     fields = ['titulo','autor','status','contenido','slug']
+
+class PostUpdate(UpdateView):
+    model = Post
+    success_url = "/blog/post/list"
+    fields = ['titulo','status','contenido']
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = "/blog/post/list"
+
+def post_detail(request, slug):
+    template_name = 'blog/post_detail.html'
+    post = get_object_or_404(Post, slug=slug)
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.post = post
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, template_name, {'post': post,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})    

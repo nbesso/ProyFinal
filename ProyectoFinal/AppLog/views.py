@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
+from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from .forms import UserRegisterForm
 from django.contrib.auth.models import User
@@ -31,6 +32,7 @@ def login_request(request):
                 return redirect('Inicio')
             else:
                 return redirect('login')
+                
 
         else:
             return redirect('login')

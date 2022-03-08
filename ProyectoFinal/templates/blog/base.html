@@ -40,7 +40,10 @@
                         <!-- Si el usuario SI está logeado mostrar el nombre de usuario -->
                         {% if request.user.is_authenticated %}
                         <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"> Bienvenido {{user.username}} </a> </p>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
+                            {% if user.is_staff == 1 %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/admin/auth/user/">Perfiles</a></li>
+                            {% endif %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
                         {% endif %}              
                     </ul>
                 </div>
@@ -239,7 +242,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/mojito.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-2" src="{% static 'blog/assets/img/caras/mojito.png' %}" width="400" height="400" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">El mojito es uno de las bebidas más populares en la coctelería.
                                         <br>
@@ -291,7 +294,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/GinTonic.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/GinTonic.png' %}" width="400" height="400"  />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Pero que Riki es el Gin Tonic</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -323,7 +326,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Manhattan.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Manhattan.png' %}" width="400" height="400"  />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Que Riki es el Manhattan</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -355,7 +358,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Martini.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Martini.png' %}" width="400" height="400"  />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Que riki es el Martini</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -387,7 +390,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Negroni.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Negroni.png' %}" width="400" height="400"  />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Que Riki el Negroni</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -419,7 +422,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Caipirinha.png' %}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'blog/assets/img/caras/Caipirinha.png' %}" width="400" height="400"  />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Que Riki la Caipi</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
