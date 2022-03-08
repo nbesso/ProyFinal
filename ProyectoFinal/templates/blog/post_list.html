@@ -1,53 +1,61 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Post</title>
-    <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-    <script>window.CKEDITOR_BASEPATH = '/static/root/ckeditor/ckeditor/';</script>
-    <!-- Si el usuario NO está logeado mostrar el boton Login -->
-    {% if not request.user.is_authenticated %}
-    <h1>Usted no está logueado</h1>
-    <h2 class="btn btn-primary" href="{% url 'login' %}">Login</h2>
-    {% endif %}
-    <!-- Si el usuario SI está logeado mostrar el nombre de usuario y Boton Logout -->
-    {% if request.user.is_authenticated %}
-    <h2 class="text-secondary mx-5"> Usuario Logueado: {{user.username}} / <a class="btn btn-primary mx-5" href="{% url 'logout' %}">Logout</a></h2>
-    {% endif %}
-</head>
-<body>
-    <div class="col-md-8 mt-3 left" style="margin:0px 0px 0px 50px">
-        {% if post.count == 0 %} 
-        <h3>No hay páginas aún</h3>
-        {% else %}
-        <h3>Posteos 
-            <ul>
-                <a href="{% url 'Inicio'%}">Inicio</a> 
-                <br>
-            <!-- Si el usuario es Admin mostrar boton crear -->
-                {% if request.user.is_authenticated and user.is_staff == 1%}
-                    <a href="{% url 'post_create'%}">Crear</a>
-                    <br>
-                    <a href="{% url 'post_list_self'%}">Listar Mis Post</a>
-                {% endif %}
-            </ul>
-        </h1>        
-            {% for post in post_list %}
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ post.titulo }}</h2>
-                        <p class="card-text text-muted h6">{{ post.autor }} | {{ post.creado_el}} </p>
-                        <p class="card-text">{{post.contenido|slice:":200"|safe}}</p>
-                        <a href="{% url 'post_detail' post.slug %}">...Ver mas -></a>
+{% extends "blog/base_post.html" %}
+
+{% block contenido %}
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            background-color: #fdfdfd;
+        }
+
+        .head_text {
+            color: #6c757d;
+        }
+
+        .card {
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+    </style>
+
+    <header class="masthead bg-primary text-white">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class=" col-md-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3 class=" site-heading my-4 mt-3 text-white"> Bienvenidos a nuestro Blog! </h3>
+                        <div>
+                            <ul>
+                                <a class=" site-heading my-4 mt-3 text-white" href="{% url 'Inicio'%}">Inicio</a> 
+                                <br>
+                            <!-- Si el usuario es Admin mostrar boton crear -->
+                                {% if request.user.is_authenticated and user.is_staff == 1%}
+                                    <a class=" site-heading my-4 mt-3 text-white" href="{% url 'post_create'%}">Crear</a>
+                                    <br>
+                                    <a class=" site-heading my-4 mt-3 text-white" href="{% url 'post_list_self'%}">Listar Mis Post</a>
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            {% endfor %}
-        {% endif %}
-    </div>
-
-    <script src="{% static 'js/scripts.js' %}"></script> 
-</body>
-</html>
+            </div>
+        </div>
+    </header>
+        <div class="container">
+            <div class="row align-left">
+                <!-- Blog Entries Column -->
+                <div class="col-md-8 mt-3 left">
+                    {% for post in post_list %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.titulo }}</h2>
+                            <p class="card-text text-muted h6">{{ post.autor }} | {{ post.creado_el}} </p>
+                            <p class="card-text">{{post.contenido|slice:":200"|safe}}</p>
+                            <p><a class="btn btn-primary" href="{% url 'post_detail' post.slug %}">Leer mas &rarr;</a></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+{%endblock%}
