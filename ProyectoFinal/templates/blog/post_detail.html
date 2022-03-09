@@ -1,73 +1,65 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ES">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de Post</title>
-    <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-          <div class="col-md-8 card mb-4  mt-3 left  top">
-            <div class="card-body">
-                {% if user.is_authenticated and user.username == post.autor.username %}
-                    <a href="{% url 'post_update' post.slug %}">...Modificar -></a>
-                    <br>
-                    <a href="{% url 'post_delete' post.slug %}">...Eliminar Post-></a>
-                {% endif %}
-              <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-              <p class=" text-muted">{{ post.autor }} | {{ post.created_on }}</p>
-              <p class="card-text ">{{ post.contenido | safe }}</p>
-            </div>
-          </div>
+{% extends 'blog/base_post.html' %} {% block contenido %}
 
-            <div>
-                {% if user.is_authenticated %} 
-                    <div class="col-md-8 card mb-4  mt-3 ">
-                        <div class="card-body">
-                        <!-- comments -->
-                        <h2>{{ comments.count }} Comentarios</h2>
-                
-                        {% for comment in comments %}
-                        <div class="comments" style="padding: 10px;">
-                            <p class="font-weight-bold">
-                            {{ comment.name }}
-                            <span class=" text-muted font-weight-normal">
-                                {{ comment.created_on }}
-                            </span>
-                            </p>
-                            {{ comment.body | linebreaks }}
-                        </div>
-                        {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-8 card mb-4  mt-3 ">
-                        <div class="card-body">
-                        {% if new_comment %}
-                        <div class="alert alert-success" role="alert">
-                            Tu comentario está pendiente de aprobación 
-                            <a href= {% url 'post_list' %} class="btn btn-primary  btn-lg">Volver al post</a>
-                        </div>
-                        {% else %}
-                        <h3>Dejanos un comentario</h3>
-                        <form method="post" style="margin-top: 1.3em;">
-                            {{ comment_form.as_p }}
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary  btn-lg">Enviar</button>
-                            <a href= {% url 'post_list' %} class="btn btn-primary  btn-lg">Volver al post</a>
-                        </form>
-                        {% endif %}
-                        </div>
-                    </div>
-                {% else %} 
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Logueate para ver comentarios</a></li>
-                {% endif %}
-            </div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 card mb-4  mt-3 left  top">
+        <div class="card-body">
+          <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+          <p class=" text-muted">{{ post.autor }} | {{ post.created_on }}</p>
+          <p class="card-text ">{{ post.contenido | safe }}</p>
+          {% if user.is_authenticated and user.username == post.autor.username %}
+          <a class= "btn btn-danger" href="{% url 'post_update' post.slug %}">Modificar Post &rarr;</a>
+          <br>
+          <br>
+          <a class= "btn btn-danger" href="{% url 'post_delete' post.slug %}">Eliminar Post &rarr;</a>
+      {% endif %}
         </div>
       </div>
-      <script src="{% static 'js/scripts.js' %}"></script> 
-</body>
-</html>
+      {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
+      <div>
+        {% if user.is_authenticated %} 
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+            <!-- comments -->
+            <h2>{{ comments.count }} Comentarios</h2>
+    
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                {{ comment.name }}
+                <span class=" text-muted font-weight-normal">
+                    {{ comment.created_on }}
+                </span>
+                </p>
+                {{ comment.body | linebreaks }}
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="card-body">
+            {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+                Tu comentario está pendiente de aprobación 
+                <a href= {% url 'post_list' %} class="btn btn-primary  btn-lg">Volver al post</a>
+            </div>
+            {% else %}
+            <h3>Dejanos un comentario</h3>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary btn-lg">Enviar</button>
+                <a href= {% url 'post_list' %} class="btn btn-secondary btn-lg">Volver al post</a>
+            </form>
+            {% endif %}
+            </div>
+        </div>
+        {% else %} 
+        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Logueate para ver comentarios</a></li>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock contenido %}
