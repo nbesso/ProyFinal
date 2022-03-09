@@ -138,5 +138,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
 CKEDITOR_CONFIGS = {'default': {'toolbar': 'full',},
-
 }
+
+
+# https://learndjango.com/tutorials/django-login-and-logout-tutorial
+LOGOUT_REDIRECT_URL  =  'Inicio'
