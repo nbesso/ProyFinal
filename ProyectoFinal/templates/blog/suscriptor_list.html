@@ -1,32 +1,33 @@
-{% extends 'blog/base.html' %}
+{% extends "blog/base_post.html" %}
 
-{% block FondoAzul %}
-{% endblock FondoAzul %}
-{% block FondoBlanco %}
-    <ul>
-        {% for Suscriptor in object_list %}
-        <li>
-            <p>Apellido y Nombre: {{Suscriptor.apellido}}, {{Suscriptor.nombre}}
-            </p>
-        </li>
-            <li>
-            <p>    E-Mail: {{Suscriptor.email}}
-            </p>
-        
-            <p>
-                <a href="{% url 'Detail' Suscriptor.id %}">Detalles</a>
-                <!--<a href="{% url 'Edit' Suscriptor.id %}">Editar</a>-->
-                <a href="{% url 'Delete' Suscriptor.id %}">Eliminar</a>
-            </p>
-        </li>
-        {% endfor %}
-    </ul>
-    <p>
-        <a href="{% url 'Inicio' %}">Crear</a>
-    </p>
 
-{% endblock FondoBlanco %}
-{% block Footer %}
-{% endblock Footer %}
+{% block contenido %}
+<header class="masthead bg-primary text-white">
+    <div class=" col-md-8 col-md-10 mx-auto">
+        <div class="site-heading">
+{% if request.user.is_authenticated and user.is_staff == 1%}
+            <h3 class="site-heading my-4 mt-3 text-white"> Listado de Suscriptores </h3>
+            <a class="site-heading my-4 mt-3 text-white" href="{% url 'Inicio'%}">Volver a Inicio</a> 
+        </div>
+    </div>
+</header>
+    <div class="container">
+        <div class="row align-center mb-2">
+            {% for Suscriptor in object_list %}
+            <div class="card mb-4">
+                <p>Apellido y Nombre: {{Suscriptor.apellido}}, {{Suscriptor.nombre}}</p>
+                <p>E-Mail: {{Suscriptor.email}}</p>
+                    <a href="{% url 'Detail' Suscriptor.id %}">Detalles</a>
+                    <a href="{% url 'Delete' Suscriptor.id %}">Eliminar</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <h3 class=" site-heading my-4 mt-3 text-white">Usted no es usuario Staff</h3>
+    <a class=" site-heading my-4 mt-3 text-white" href="{% url 'Inicio'%}">Volver a Inicio</a> 
+{% endif %}
+{% endblock %}
+
 
 

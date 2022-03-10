@@ -1,18 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% if not request.user.is_authenticated %} 
+        {% if user.is_staff != 1 %}
         <form method="POST"> {% csrf_token %}
             {{ form.as_p }} 
             <input type="submit" class="btn btn-primary btn-sm btn-block" value="Enviar Suscripción">
-        </form>    
-    {%else%}
-        {% if user.is_staff == 1 %}
+        </form>
+        {% else %}    
         <form method="POST"> {% csrf_token %}
             {{ form.as_p }} 
             <input type="submit" class="btn btn-primary btn-sm btn-block" value="Enviar Suscripción">
             <a class="btn btn-primary btn-sm btn-block" href="{% url 'List' %}">Ver Lista de Suscriptores</a>
         </form>
         {% endif %}    
-    {% endif %}
 {% endblock content %}
