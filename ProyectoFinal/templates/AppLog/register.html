@@ -1,20 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-</head>
-<body>
-    <form method="post">{% csrf_token %}
-        {{form.as_p}}
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Registro - Cocktails entre amigos</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/shaker.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <style>A {text-decoration: none;} </style>
+    <body>
+        <h1 class="masthead-heading bg-secondary text-white text-center mb-5">
+            <div><a class="text-white">Hola Amigo!</a></div>
+            <div><a class="text-white">Completa estos datos para el registro...</a></div>
+        </h1>
+        <div class="container text-left">
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
 
-        <input type="submit" class="btn btn-primary" value="Enviar">
-
-    </form>
-    <script src="{% static 'js/scripts.js' %}"></script> 
-</body>
+            <input type="submit" class="btn btn-secondary" value="Enviar">
+            <a href="{% url 'login' %}" class="btn btn-secondary">Cancelar y volver a Login</a>
+        </div>
+        </form>
+    </body>
 </html>
