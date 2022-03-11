@@ -44,6 +44,7 @@ def login_request(request):
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
+
         if form.is_valid():
             username = form.data['username']
             try:
@@ -79,7 +80,6 @@ def editarPerfil(request):
 
 @login_required
 def subir_avatar(request):
-    form = AvatarForm(request.POST, request.FILES)
     u = request.user
     if request.method == 'POST':
         miFormulario = AvatarForm(request.POST, request.FILES)
