@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
-from .forms import UserRegisterForm
+from .forms import UserEditForm, UserRegisterForm
 from django.contrib.auth.models import User
 import django
 from django.contrib.auth.decorators import login_required
@@ -41,8 +41,6 @@ def login_request(request):
 
     return render(request, 'AppLog/login.html', {'form': form})
 
-
-
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -63,3 +61,20 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, 'AppLog/register.html', {'form': form})
+
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid:
+            informacion = miFormulario.data
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']            
+            usuario.save()
+
+            return render(request, 'blog/post_list.html')
+    else:
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    return render(request, 'blog/editarPerfil.html', {'miFormulario':miFormulario,'usuario':usuario})
+

@@ -10,7 +10,7 @@
     <h1>Formulario editar perfil</h1>
     <h1>De {{request.user}}</h1>
 
-    <form action="" method="POST"> {% csrf_token %}
+    <form action="" method="post"> {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
         </table>
