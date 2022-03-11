@@ -21,6 +21,7 @@ class UserEditForm(UserCreationForm):
     password2 = forms.CharField(label="Reingrese Contraseña", widget=forms.PasswordInput)
     last_name = forms.CharField()
     first_name = forms.CharField()
+    avatar = forms.ImageField()
 
     class Meta:
         model = User
@@ -28,8 +29,7 @@ class UserEditForm(UserCreationForm):
         help_texts = {k:"" for k in fields}
 
 class AvatarForm(forms.ModelForm):
-    imagen = forms.ImageField()
 
     class Meta:
         model = Avatar
-        fields = ['user','imagen']
+        fields = ['imagen']

@@ -68,7 +68,8 @@ def editarPerfil(request):
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']        
             usuario.last_name = informacion['last_name']      
-            usuario.first_name = informacion['first_name']  
+            usuario.first_name = informacion['first_name'] 
+            usuario.avatar = informacion['avatar']         
             usuario.save()
 
             return render(request, 'blog/suscriptor_form.html')
@@ -78,14 +79,16 @@ def editarPerfil(request):
 
 @login_required
 def subir_avatar(request):
+    form = AvatarForm(request.POST, request.FILES)
+    u = request.user
     if request.method == 'POST':
-        form = AvatarForm(request.POST, request.FILES)
-        if form.is_valid:
-            username = form.data['user']
-            username.imagen = form['imagen']           
-            username.save()
+        miFormulario = AvatarForm(request.POST, request.FILES)
+        if miFormulario.is_valid:
+            i = miFormulario.data
+            u.imagen = i['imagen']           
+            u.save
             return render(request,'blog/post_list.html')
     else:
-        form=AvatarForm()
+        miFormulario=AvatarForm()
 
-    return render(request, 'blog/agregar_avatar.html', {'form':form})
+    return render(request, 'blog/agregar_avatar.html', {'miFormulario':miFormulario, 'u':u})
