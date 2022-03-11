@@ -70,10 +70,12 @@ def editarPerfil(request):
             informacion = miFormulario.data
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
-            usuario.password2 = informacion['password2']            
+            usuario.password2 = informacion['password2']        
+            usuario.last_name = informacion['last_name']      
+            usuario.first_name = informacion['first_name']          
             usuario.save()
 
-            return render(request, 'blog/post_list.html')
+            return render(request, 'blog/suscriptor_form.html')
     else:
         miFormulario = UserEditForm(initial={'email':usuario.email})
     return render(request, 'blog/editarPerfil.html', {'miFormulario':miFormulario,'usuario':usuario})

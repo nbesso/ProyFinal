@@ -39,11 +39,12 @@
                         {% endif %}
                         <!-- Si el usuario SI está logeado mostrar el nombre de usuario -->
                         {% if request.user.is_authenticated %}
+                        <img src="{{(Avatar.objects.filter(user = request.user.id))[0].imagen.url)}}"/>
                             {% if user.is_staff == 1 %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/admin/auth/user/">Perfiles</a></li>
                             {% endif %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
-                        <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"> Hola! {{user.username}} </a> </p>
+                        <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EditarPerfil' %}"> Hola! {{user.username}} </a> </p>
                         {% endif %}
                     </ul>
                 </div>

@@ -6,4 +6,4 @@ class Info_adicional(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     #Agregamos la imagen del Avatar
-    imagen = models.ImageField(upload_to='avatares', null=True, blank= True)
+    imagen = models.ImageField(upload_to='Avatar', null=True, blank= True)
