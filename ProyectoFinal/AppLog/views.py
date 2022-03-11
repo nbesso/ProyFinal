@@ -80,3 +80,4 @@ def editarPerfil(request):
         miFormulario = UserEditForm(initial={'email':usuario.email})
     return render(request, 'blog/editarPerfil.html', {'miFormulario':miFormulario,'usuario':usuario})
 
+
