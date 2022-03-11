@@ -43,7 +43,8 @@
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/admin/auth/user/">Perfiles</a></li>
                             {% endif %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
-                        <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"> Bienvenido {{user.username}} </a> </p>    
+                        <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"> Hola! {{user.username}} </a> </p>
+                        <img style=width="80" height="80" src="{{user.avatar.imagen.url}}">    
                         {% endif %}
                     </ul>
                 </div>
@@ -193,19 +194,25 @@
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Location</h4>
                         <p class="lead mb-0">
-                            2215 John Daniel Drive
+                            RN 19, Km 3.7
                             <br />
-                            Clark, MO 65243
+                            Montecristo, Córdoba
                         </p>
                     </div>
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Around the Web</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <!--<h4 class="text-uppercase mb-4">Around the Web</h4> -->
+                        <h4 class="text-uppercase mb-4">Importante</h4>
+                        <p class="lead mb-0">
+                            Beber con moderación.
+                            <br>
+                            Si tomás, no manejes.
+                        </p>
+                    <!--<a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                    </div>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>  -->
+                    </div> 
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">About Freelancer</h4>
