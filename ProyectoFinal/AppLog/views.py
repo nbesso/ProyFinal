@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
-from .forms import UserEditForm, UserRegisterForm
+from .forms import *
 from django.contrib.auth.models import User
 import django
 from django.contrib.auth.decorators import login_required
@@ -44,24 +44,20 @@ def login_request(request):
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-
         if form.is_valid():
             username = form.data['username']
             try:
                 user_new = User.objects.get(username=username)
             except django.contrib.auth.models.User.DoesNotExist:
                 user_new = None
-
             if not user_new:
                 form.save()
-
             return redirect('login')
-
     else:
         form = UserRegisterForm()
-
     return render(request, 'AppLog/register.html', {'form': form})
 
+@login_required
 def editarPerfil(request):
     usuario = request.user
     if request.method == "POST":
@@ -72,7 +68,7 @@ def editarPerfil(request):
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']        
             usuario.last_name = informacion['last_name']      
-            usuario.first_name = informacion['first_name']          
+            usuario.first_name = informacion['first_name']  
             usuario.save()
 
             return render(request, 'blog/suscriptor_form.html')
@@ -80,4 +76,16 @@ def editarPerfil(request):
         miFormulario = UserEditForm(initial={'email':usuario.email})
     return render(request, 'blog/editarPerfil.html', {'miFormulario':miFormulario,'usuario':usuario})
 
+@login_required
+def subir_avatar(request):
+    if request.method == 'POST':
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid:
+            username = form.data['user']
+            username.imagen = form['imagen']           
+            username.save()
+            return render(request,'blog/post_list.html')
+    else:
+        form=AvatarForm()
 
+    return render(request, 'blog/agregar_avatar.html', {'form':form})
