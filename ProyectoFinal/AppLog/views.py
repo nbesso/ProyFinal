@@ -70,25 +70,29 @@ def editarPerfil(request):
             usuario.password2 = informacion['password2']        
             usuario.last_name = informacion['last_name']      
             usuario.first_name = informacion['first_name'] 
-            usuario.avatar = informacion['avatar']         
             usuario.save()
-
-            return render(request, 'blog/suscriptor_form.html')
+            if Avatar.objects.filter(user=usuario):
+                avatar = Avatar.objects.get(user=usuario)
+                avatar.imagen = informacion['avatar']
+            else:
+                avatar = Avatar(user=usuario, imagen=informacion['avatar'])
+            avatar.save()            
+            return redirect('Inicio')
     else:
         miFormulario = UserEditForm(initial={'email':usuario.email})
     return render(request, 'blog/editarPerfil.html', {'miFormulario':miFormulario,'usuario':usuario})
 
-@login_required
-def subir_avatar(request):
-    u = request.user
-    if request.method == 'POST':
-        miFormulario = AvatarForm(request.POST, request.FILES)
-        if miFormulario.is_valid:
-            i = miFormulario.data
-            u.imagen = i['imagen']           
-            u.save
-            return render(request,'blog/post_list.html')
-    else:
-        miFormulario=AvatarForm()
-
-    return render(request, 'blog/agregar_avatar.html', {'miFormulario':miFormulario, 'u':u})
+#@login_required
+#def subir_avatar(request):
+# #   u = request.user
+ #   if request.method == 'POST':
+ #       miFormulario = AvatarForm(request.POST, request.FILES)
+ #       if miFormulario.is_valid:
+ #           i = miFormulario.data
+ #           u.imagen = i['imagen']           
+#            u.save
+#            return render(request,'blog/post_list.html')
+#    else:
+ #       miFormulario=AvatarForm()
+#
+ #   return render(request, 'blog/agregar_avatar.html', {'miFormulario':miFormulario, 'u':u})

@@ -10,6 +10,6 @@ urlpatterns = [
     path('cuenta/logout/', LogoutView.as_view(template_name='AppLog/logout.html'), name='logout'),
     path('cuenta/register/', register, name='Register'),
     path('cuenta/editarPerfil/', editarPerfil, name='EditarPerfil'),
-    path('cuenta/avatar/', subir_avatar, name='SubirAvatar'),
+    #path('cuenta/avatar/', subir_avatar, name='SubirAvatar'),
 
 ]
