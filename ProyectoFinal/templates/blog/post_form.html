@@ -1,37 +1,55 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea el post</title>
-    <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-    
-</head>
-<body>
-    
-    <div style="margin:0px 0px 0px 50px">
-        {% if request.user.is_authenticated %}
-            {% if user.is_staff == 1%}
-                <form method="POST"> {% csrf_token %} 
-                {{ form.media }}
-                {{ form.as_p }} 
-                <input type="submit" class="btn btn-primary btn-sm btn-block" value="Postear">
-                <a href= {% url 'post_list' %} class="btn btn-primary  btn-sm">Volver a los post</a>
-                </form>
-            {% else %}
-                Usted no es Admin, no puede redactar Post.
-            {% endif %}
-        {% else %} 
-        Debe Loguearse para crear un Post
-        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-    </div>
+{% extends 'blog/base_post.html' %}
 
-    <script src="{% static 'blog/js/scripts.js' %}"></script> 
-</body>
-</html>
+
+
+{% block contenido %}
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            background-color: #fdfdfd;
+        }
+
+        .head_text {
+            color: #6c757d;
+        }
+
+        .card {
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+    </style>
+    <header class="masthead bg-primary text-white">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class=" col-md-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <div>
+                            <a href= {% url 'post_list' %} class="btn btn-secondary  btn-sm">Volver a los post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <div style="margin:15px 0px 0px 50px">
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff == 1%}
+                    <form method="POST"> {% csrf_token %} 
+                    {{ form.media }}
+                    {{ form.as_p }} 
+                    <input type="submit" class="btn btn-primary btn-sm btn-block" value="Postear">
+                    <a href= {% url 'post_list' %} class="btn btn-primary  btn-sm">Volver a los post</a>
+                    </form>
+                {% else %}
+                    Usted no es Admin, no puede redactar Post.
+                {% endif %}
+            {% else %} 
+            Debe Loguearse para crear un Post
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </div>
+{%endblock%}
 
 
 

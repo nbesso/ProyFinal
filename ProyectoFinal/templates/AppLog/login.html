@@ -19,10 +19,13 @@
     </head>
     <style>A {text-decoration: none;} </style>
     <body>
+        {% block header %}
         <h1 class="masthead-heading bg-secondary text-white text-center mb-5">
                     <div><a class="text-white">Hola Amigo!</a></div>
                     <div><a class="text-white">Ingresa o Regístrate para ver y comentar nuestros Post!</a></div>
         </h1>
+        {% endblock header %}
+        {% block cuerpo %}
         <div class="container text-center">
         <form method="POST">{% csrf_token %}
             {{form.as_p}}
@@ -32,7 +35,8 @@
             <a href="{% url 'Register' %}" class="btn btn-secondary mb-2">Regístrate</a>
         </div>
             <a href="{% url 'Inicio' %}" class="btn btn-secondary mb-2">Cancelar y continuar como vistante</a>
-        </div>   
+        </div>
+        {% endblock cuerpo %}   
         <script src="{% static 'js/scripts.js' %}"></script> 
     </body>
 </html>
