@@ -1,20 +1,13 @@
-{% extends 'blog/base.html' %}
-{% block FondoAzul %}{% endblock FondoAzul %}
+{% extends 'blog/base_post.html' %} {% block contenido %}
 
-{% block FondoBlanco %}
 <!-- +++++++++++++++++++++++  GON: DATOS DE CONTACTO +++++++++++++++++++++++++++++ -->
+    <div class="card-body">        
         <form method="post">{% csrf_token %}
-            Estas seguro de eliminar el Post {{ object.titulo }}?
-            <br>
-            <input type="submit" value="Enviar">
+                Estas seguro de eliminar el Post: <b>{{ object.titulo }}? </b>
+
+                <input type="submit" class= "btn btn-danger mb-2" value="Sí, eliminar">
         </form>
+            <a class="btn btn-secondary mb-2" href="{% url 'post_list' %}">Cancelar</a>
+    </div>
 
-<!-- +++++++++++++++++++++++  GON: Crear botón para volver a pag principal ++++++++++ -->
-        <br>
-        <p>
-            <a href="{% url 'post_list' %}">Cancelar</a>
-        </p>
-
-{% endblock FondoBlanco %}
-
-{% block Footer %}{% endblock Footer %}
+{% endblock contenido %}

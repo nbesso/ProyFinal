@@ -38,7 +38,11 @@
                     <form method="POST"> {% csrf_token %} 
                     {{ form.media }}
                     {{ form.as_p }} 
+                    {% if post.status != 1 %}
                     <input type="submit" class="btn btn-primary btn-sm btn-block" value="Postear">
+                    {% else %}
+                    <input type="submit" class="btn btn-primary btn-sm btn-block" value="Modificar">
+                    {% endif %}
                     <a href= {% url 'post_list' %} class="btn btn-primary  btn-sm">Volver a los post</a>
                     </form>
                 {% else %}

@@ -5,11 +5,11 @@
       <div class="col-md-8 card mb-4  mt-3 left  top">
         <div class="card-body">
           <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-          <p class=" text-muted">{{ post.autor }} | {{ post.created_on }}</p>
+          <p class=" text-muted">{{ post.autor }} | {{ post.creado_el }}</p>
+          <h2 class="card-text">{{ post.titulo | safe }}</h2>
           <p class="card-text ">{{ post.contenido | safe }}</p>
           {% if user.is_authenticated and user.username == post.autor.username %}
-          <a class= "btn btn-danger" href="{% url 'post_update' post.slug %}">Modificar Post &rarr;</a>
-          <br>
+          <a class= "btn btn-warning mb-2" href="{% url 'post_update' post.slug %}">Modificar Post &rarr;</a>
           <br>
           <a class= "btn btn-danger" href="{% url 'post_delete' post.slug %}">Eliminar Post &rarr;</a>
       {% endif %}

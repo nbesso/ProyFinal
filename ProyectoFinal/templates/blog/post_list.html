@@ -25,13 +25,13 @@
                     <div class="site-heading">
                         <h3 class=" site-heading my-4 mt-3 text-white"> Bienvenidos a nuestro Blog!</h3>
                         <div>
-                                <a class="btn btn-secondary" href="{% url 'Inicio'%}">Inicio</a> 
+                                <a class="btn btn-secondary mb-2" href="{% url 'Inicio'%}">Inicio</a> 
                                 <br>
                             <!-- Si el usuario es Admin mostrar boton crear -->
                                 {% if request.user.is_authenticated and user.is_staff == 1%}
-                                    <a class=" site-heading my-4 mt-3 text-white" href="{% url 'post_create'%}">Crear</a>
+                                    <a class="btn btn-secondary mb-2" href="{% url 'post_create'%}">Crear</a>
                                     <br>
-                                    <a class=" site-heading my-4 mt-3 text-white" href="{% url 'post_list_self'%}">Listar Mis Post</a>
+                                    <a class="btn btn-secondary mb-2" href="{% url 'post_list_self'%}">Listar Mis Post</a>
                                 {% endif %}
                         </div>
                     </div>

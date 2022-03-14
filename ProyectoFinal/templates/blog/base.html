@@ -40,7 +40,7 @@
                         <!-- Si el usuario SI está logeado mostrar el nombre de usuario -->
                         {% if request.user.is_authenticated %}
                             {% if user.is_staff == 1 %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/admin/auth/user/">Perfiles</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/admin/auth/user/">Admin Site</a></li>
                             {% endif %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Logout</a></li>
                         <p class="text-primary mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EditarPerfil' %}"> Hola {{user.first_name}} !!! </a> </p>
@@ -228,7 +228,7 @@
     {% endblock Footer %}
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
+            <div class="container"><small>Copyright &copy; Cokctails_entre_amigos</small></div>
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
