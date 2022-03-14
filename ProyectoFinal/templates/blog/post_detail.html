@@ -40,7 +40,7 @@
             <div class="card-body">
             {% if new_comment %}
             <div class="alert alert-success" role="alert">
-                Tu comentario está pendiente de aprobación 
+                Gracias por comentar este post! 
                 <a href= {% url 'post_list' %} class="btn btn-primary  btn-lg">Volver al post</a>
             </div>
             {% else %}
@@ -49,7 +49,7 @@
                 {{ comment_form.as_p }}
                 {% csrf_token %}
                 <button type="submit" class="btn btn-secondary btn-lg">Enviar</button>
-                <a href= {% url 'post_list' %} class="btn btn-secondary btn-lg">Volver al post</a>
+                <a href= {% url 'post_list' %} class="btn btn-secondary btn-lg">Volver al Blog</a>
             </form>
             {% endif %}
             </div>

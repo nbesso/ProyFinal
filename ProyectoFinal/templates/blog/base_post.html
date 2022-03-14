@@ -54,14 +54,12 @@
                 <!-- Si el usuario SI está logeado mostrar el nombre de usuario y Boton Logout -->
                 {% if request.user.is_authenticated %}
                 <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto">
+                    <div class="navbar-nav ms-auto">
                         <li class="nav-item text-black">
-                            <a class="nav-link text-white font-weight-bold">Bienvenido: {{user.username}}</a>
+                            <a class="nav-link text-white font-weight-bold">Bienvenido: <li class="text-uppercase"> {{user.username}} </li> </a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link text-white text-uppercase font-weight-bold" href="{% url 'logout' %}">Logout</a>
-                        </li>
-                    </ul>
+                        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                    </div>
                 </div>
                 {% endif %}
                 <!--div class="collapse navbar-collapse" id="navbarResponsive">

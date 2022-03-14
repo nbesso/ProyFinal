@@ -10,25 +10,15 @@
 </h1>
 {% endblock header %}
 {% block cuerpo %}
-<div class="container text-left">
-    <form action="" method="post"> {% csrf_token %}
-        <table>
-            {{miFormulario.as_table}}
-        </table>
-        <input type="submit" class="btn btn-secondary mb-2 " value="Modificar">
-    </form>
-    <a href="{% url 'Inicio' %}" class="btn btn-secondary mb-2">Cancelar</a>
-</div>
+    <div class='form-inline flex-column flex-sm-row'>
+        <img style="height: 200px;margin: 25px 100px 0px 100px;float:left;" src="{{user.avatar.imagen.url}}">
+        <img style="height: 200px;float:left;">
+        <form action="" method="post"> {% csrf_token %}
+            <table>
+                    {{miFormulario.as_table}}
+            </table>
+            <input type="submit" class="btn btn-secondary mb-2 " value="Modificar">
+            <a href="{% url 'Inicio' %}" class="btn btn-secondary mb-2">Cancelar</a>
+        </form>
+    </div>
 {% endblock cuerpo %}   
-<body>
-    <h1>Formulario editar perfil</h1>
-    <h1>De {{request.user}}</h1>
-
-    <form action="" method="post"> {% csrf_token %}
-        <table>
-            {{miFormulario.as_table}}
-        </table>
-        <input type="submit" value="Modificar">
-    </form>
-</body>
-</html>
