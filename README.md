@@ -9,7 +9,7 @@ Participantes:
 https://youtu.be/HclXj0fti2Q
 
 # Actividades de Natali Besso
-Creación de repositorio en Github. Creación de proyecto "Proyecto Final", Creación de APP Blog, configuración de settings.py, primera migración de modelos, Download de plantilla Bootstrap y creacion de carpeta static, creación de template Base, creación secciones Cocktails e incorporación de imagenes y primeras vistas.  
+Creación de repositorio en Github. Creación de proyecto "Proyecto Final", Creación de APP Blog, configuración de settings.py, primera migración de modelos, Download de plantilla Bootstrap y creacion de carpeta static, creación de template Base, creación secciones Cocktails e incorporación de imagenes y primeras vistas. Configuraciones html y correcciones en modelos.  
 
 # Actividades de Gonzalo Monguillot
 Creación y modelado dentro de la aplicación blog para ABM de suscriptores por formulario Django, validaciones.Creación y modelado dentro de la aplicación AppLog para Login/Logout/Register de usuarios, validaciones.Configuraciones de templates html con funcionalidades dinámicas de imágenes o formularios. Creación de modelo Avatar
